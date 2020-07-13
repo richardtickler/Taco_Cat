@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#">Git</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Portfolio</a>
+                        <a class="nav-link" href="https://keen-poincare-5c6b7c.netlify.app/">Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog Post/YouTube Explanation</a>
@@ -65,77 +65,73 @@
         <h1 class="mt-5">The Exercise Itself</h1>
         <p class="lead">"TacoCat" is a project that runs a palindrome algorithm </p>
         <ul class="list-unstyled">
-            <li>Now let's try it out!</li>
             <li>Click the "More Info" button for the definition of palindromes </li>
         </ul>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">More Info</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">More Info</button>
         <div id="demo" class="collapse">
-            pal·in·drome
-            /ˈpalənˌdrōm/
-            Learn to pronounce
-            noun
-            a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
+            pal·in·drome <br />
+            /ˈpalənˌdrōm/ <br />
+
+
+            a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses run, poop
         </div>
     </div>
 
     <hr />
 
     <div class="row">
-        <div class="col text-center h3">
+        <div class="col text-center">
             Type a word or phrase and see if it's a palindrome or not
         </div>
         <br />
-        <hr />
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <input id="palInput" type="text" placeholder="Enter Word" />
+        </div>
+        <div>
+            <button id="btnPal" class="btnMarg btn btn-outline-primary btnWide">Submit</button>
+        </div>
+        </div>
+
         <div class="row">
-            <div class="col-11">
-                <input id="palInput" type="text" placeholder="Enter Word" />
+            <div class="col">
+                <p id="palOut"></p>
             </div>
         </div>
 
 
-        <div>
-            <button id="btnPal" class=" btnMarg btn btn-dark btnWide">Palindrome!(Maybe)</button>
-        </div>
-    </div>
-
-    <hr />
-
-    <div class="row">
-        <div class="col">
-            <p id="palOut"></p>
-        </div>
-    </div>
 
 
 
+        <!-- Bootstrap core JavaScript -->
+        <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <script>
+            //where the magic happens
+            $("#btnPal").on("click", function () {
+                let word = $("#palInput").val().toLowerCase()
+                    .replace(/\s/g, '').replace(/\./g, '').replace(/\,/g, '');
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-    <script>
-        //where the magic happens
-        $("#btnPal").on("click", function () {
-            let word = $("#palInput").val().toLowerCase()
-                .replace(/\s/g, '').replace(/\./g, '').replace(/\,/g,'');
+                let revWord = "";
+                for (let loop = word.length - 1; loop >= 0; loop--) {
+                    revWord += word.substr(loop, 1);
+                }
 
 
-            let revWord = "";
-            for (let loop = word.length - 1; loop >= 0; loop--) {
-                revWord += word.substr(loop, 1);
-            }
-
-
-            if (word === revWord) {
-                $("#palOut").text(`${word} reversed is ${revWord} therefore it is a Palindrome.`)
-            }
-            else {
-                $("#palOut").text(`${word} reversed is ${revWord} therefore it is NOT a Palindrome.`)
-            }
-        });
-    </script>
+                if (word === revWord) {
+                    $("#palOut").text(`${word} reversed is ${revWord} therefore it is a Palindrome.`)
+                }
+                else {
+                    $("#palOut").text(`${word} reversed is ${revWord} therefore it is NOT a Palindrome.`)
+                }
+            });
+        </script>
 
 </body>
 
