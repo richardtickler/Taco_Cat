@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link href="css/prism.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/Index.html">
                             Home
                         </a>
@@ -34,12 +34,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Solve.html">Solve</a>
                     </li>
-                    <!--<li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/Code.html">Code</a>
-                    </li>-->
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="#">Git</a>
-                    </li>-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/richardtickler/Taco_Cat">Git</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://jaylins-portfolio.netlify.app">Portfolio</a>
                     </li>
@@ -62,6 +62,39 @@
                     <li>Will display on this page</li>
                 </ul>
             </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <pre>
+                    <code class="language-js">
+                        //where the magic happens
+                        $("#btnPal").on("click", function () {
+                        let word = $("#palInput").val().toLowerCase()
+                        .replace(/\s/g, '').replace(/\./g, '').replace(/\,/g, '');
+
+
+                        let revWord = "";
+                        for (let loop = word.length - 1; loop >= 0; loop--) {
+                        revWord += word.substr(loop, 1);
+                        }
+
+
+                        if (word === revWord) {
+                        $("#palOut").text(`${word} reversed is ${revWord} ,therefore it is a Palindrome.`)
+                        }
+                        else {
+                        $("#palOut").text(`${word} reversed is ${revWord} ,therefore it is NOT a Palindrome.`)
+                        }
+                        });
+
+                        $("#btnClear").on("click", function () {
+
+                        $("#palOut").text(``)
+                        });
+                    </code>
+</pre>
+            </div>
         </div>
     </div>
 
@@ -69,7 +102,7 @@
     <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+    <script src="scripts/prism.js"></script>
 </body>
 
 </html>
